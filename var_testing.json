@@ -1,0 +1,6 @@
+{
+  "iso_url": "https://builds.coreos.fedoraproject.org/prod/streams/testing/builds/32.20200615.2.0/x86_64/fedora-coreos-32.20200615.2.0-live.x86_64.iso",
+  "iso_checksum": "d78988bb2e7f503d3a2b9c316d8995980151cb4f57d359a62348dabab255fb4f",
+  "release": "32.20200615.2.0",
+  "os_name": "fedora-coreos-testing"
+}

@@ -1,0 +1,91 @@
+{
+    "builders": [
+      {
+        "type": "virtualbox-iso",
+        "boot_wait": "45s",
+        "boot_command": [
+            "curl -LO http://{{ .HTTPIP }}:{{ .HTTPPort }}/config.ign.json<enter><wait>",
+            "sudo coreos-installer install /dev/sda --ignition-file config.ign.json && sudo reboot<enter>",
+            "<wait3m>"
+        ],
+        "guest_os_type": "Linux_64",
+        "cpus": "{{user `cpus`}}",
+        "memory": "{{user `memory`}}",
+        "disk_size": "{{user `disk_size`}}",
+        "hard_drive_interface": "sata",
+        "guest_additions_mode": "disable",
+        "http_directory": "{{user `http_directory`}}",
+        "iso_checksum": "sha256:{{user `iso_checksum`}}",
+        "iso_url": "{{user `iso_url`}}",
+        "ssh_username": "vagrant",
+        "ssh_private_key_file": "{{template_dir}}/files/vagrant-id_rsa",
+        "ssh_port": 22,
+        "ssh_timeout": "10000s",
+        "keep_registered": false,
+        "headless": "{{user `headless`}}",
+        "shutdown_command": "sudo shutdown -h now",
+        "output_directory": "{{user `workdirpacker`}}",
+        "virtualbox_version_file": "",
+        "export_opts":
+        [
+          "--manifest",
+          "--vsys", "0",
+          "--description", "{{user `os_name`}} {{user `release`}}",
+          "--version", "{{user `release`}}"
+        ],
+        "vboxmanage": [
+          [ "modifyvm", "{{.Name}}", "--graphicscontroller", "vmsvga" ],
+          [ "modifyvm", "{{.Name}}", "--vram", "9" ]
+        ]
+      }
+    ],
+    "provisioners": [
+      {
+        "environment_vars": [
+          "http_proxy={{user `http_proxy`}}",
+          "https_proxy={{user `https_proxy`}}",
+          "no_proxy={{user `no_proxy`}}"
+        ],
+        "execute_command": "sudo -E env {{.Vars}} bash '{{.Path}}'",
+        "expect_disconnect": false,
+        "scripts": [
+          "{{template_dir}}/provision/provision.sh"
+        ],
+        "type": "shell"
+      }
+    ],
+    "post-processors": [
+      [
+        {
+          "type": "artifice",
+          "files": ["{{user `build_directory`}}/packer-{{user `os_name`}}-virtualbox/info.json"]
+        },
+        {
+          "type": "shell-local",
+          "inline": [
+            "echo '{\"os_name\": \"{{user `os_name`}}\", \"release\": \"{{user `release`}}\"}' > {{user `workdirpacker`}}/info.json"
+          ]
+        }
+      ],
+      {
+        "output": "{{user `build_directory`}}/{{user `os_name`}}-{{user `release`}}_{{.Provider}}.box",
+        "type": "vagrant",
+        "vagrantfile_template": "{{template_dir}}/files/vagrantfile",
+        "compression_level": 9,
+        "provider_override": "virtualbox",
+        "include": "{{user `workdirpacker`}}/info.json"
+      }
+    ],
+    "variables": {
+      "build_directory": "builds",
+      "cpus": "1",
+      "disk_size": "73728",
+      "headless": "",
+      "http_proxy": "{{env `http_proxy`}}",
+      "https_proxy": "{{env `https_proxy`}}",
+      "memory": "1024",
+      "no_proxy": "{{env `no_proxy`}}",
+      "http_directory": "{{template_dir}}/http",
+      "workdirpacker": "{{user `build_directory`}}/packer-{{user `os_name`}}-{{user `release`}}-virtualbox"
+    }
+  }

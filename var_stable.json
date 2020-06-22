@@ -1,0 +1,6 @@
+{
+  "iso_url": "https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/32.20200601.3.0/x86_64/fedora-coreos-32.20200601.3.0-live.x86_64.iso",
+  "iso_checksum": "90b2b646ad2208f822a54a6a42f3e4399d2bb346edf56b25f047bdbb8a04ac67",
+  "release": "32.20200601.3.0",
+  "os_name": "fedora-coreos-stable"
+}
