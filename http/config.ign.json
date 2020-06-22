@@ -1,0 +1,51 @@
+{
+  "ignition": {
+    "version": "3.0.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "groups": [
+          "sudo"
+        ],
+        "name": "vagrant",
+        "passwordHash": "$6$rounds=4096$5uz0VFBAIlDOmVvW$Gr3zcjHvHwVzr8Ly2rP0Vphr2YFrZ9TY82.B6s.3fkj8aNpmK425dGUGYk6nIh/Adhp4P8ZyGv90Ly.hlCSpp1"
+      },
+      {
+        "name": "core",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
+        ]
+      }
+    ]
+  },
+  "storage": {
+    "directories": [
+      {
+        "group": {
+          "name": "vagrant"
+        },
+        "path": "/home/vagrant/.ssh",
+        "user": {
+          "name": "vagrant"
+        },
+        "mode": 448
+      }
+    ],
+    "files": [
+      {
+        "group": {
+          "name": "vagrant"
+        },
+        "path": "/home/vagrant/.ssh/authorized_keys",
+        "user": {
+          "name": "vagrant"
+        },
+        "contents": {
+          "source": "data:,ssh-rsa%20AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr%2Bkz4TjGYe7gHzIw%2BniNltGEFHzD8%2Bv1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL%2BGPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm%2BR4LOzFUGaHqHDLKLX%2BFIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ%3D%3D%20vagrant%20insecure%20public%20key%0A%0A"
+        },
+        "mode": 384
+      }
+    ]
+  }
+}

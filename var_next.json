@@ -1,0 +1,6 @@
+{
+  "iso_url": "https://builds.coreos.fedoraproject.org/prod/streams/next/builds/32.20200615.1.0/x86_64/fedora-coreos-32.20200615.1.0-live.x86_64.iso",
+  "iso_checksum": "0576701bdb751dcdcd48844a4ecc0340a2f8eed7fe1a3a0c096944a9d8a21fdc",
+  "release": "32.20200615.1.0",
+  "os_name": "fedora-coreos-next"
+}
