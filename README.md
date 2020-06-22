@@ -27,6 +27,22 @@ $ sh update_vars.sh
 
 In *utils/config.ign.yml* you'll find a basic machine config file.
 
+### Using pre-built boxes
+
+You can also add the pre-built boxes in Vagrant:
+
+`
+$ vagrant box add mihailutasu/fedora-coreos-stable
+`
+
+`
+$ vagrant box add mihailutasu/fedora-coreos-next
+`
+
+`
+$ vagrant box add mihailutasu/fedora-coreos-testing
+`
+
 ## License
 
 ```text
