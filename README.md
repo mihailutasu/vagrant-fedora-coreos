@@ -4,7 +4,7 @@ A project for building [Fedora CoreOS](https://getfedora.org/en/coreos?stream=st
 
 ## Requirements
 
-- [Packer](https://www.packer.io/)
+- [Packer](https://www.packer.io/) with [VirtualBox](https://developer.hashicorp.com/packer/integrations/hashicorp/virtualbox) and [Vagrant](https://developer.hashicorp.com/packer/integrations/hashicorp/vagrant) support
 - [VirtualBox](https://www.virtualbox.org)
 - [Podman](https://podman.io/) or [Docker](https://www.docker.com/) (or FCCT installed) - to generate your own Ignition files
 - [jq](https://stedolan.github.io/jq/) - if you want to download the latest images of CoreOS
@@ -22,7 +22,7 @@ This will download the ISO image (if not already in packer's cache) and will bui
 You might also want to update var_*.json files first, to the latest versions:
 
 `
-$ sh update_vars.sh
+$ bash update_vars.sh
 `
 
 In *utils/config.ign.yml* you'll find a basic machine config file.
